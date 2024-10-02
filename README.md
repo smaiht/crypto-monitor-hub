@@ -3,6 +3,24 @@
 
 This is the central hub for a real-time cryptocurrency data monitoring system. It serves as a coordinator and data aggregator for multiple crypto-monitor-service instances, each monitoring different cryptocurrency exchanges.
 
+## System Architecture Overview
+
+1. Scalable Design:
+   Each exchange can be monitored on a separate machine with its own database. The main hub can query all machines for specific data.
+
+2. Efficient Data Storage:
+   Using TimescaleDB with materialized views for each exchange:
+   - `ticker_data`: Contains records for all pairs for each second. Data is collected over a configurable interval (configurable to 5 seconds via .env) before being inserted. Kept for 24 hours.
+   - Materialized views use continuous aggregators to populate corresponding tables:
+     - `ticker_data_1m`: 1-minute aggregated data, stored for up to 7 days.
+     - `ticker_data_1h`: 1-hour aggregated data, stored indefinitely.
+
+3. Performance Optimization:
+   - Composite indexes on trading pairs and time.
+   - Table partitioning by trading pairs and time.
+
+Note: Estimated database size for 1 exchange after 1 year: ~1 GB.
+
 
 ## Installation
 
