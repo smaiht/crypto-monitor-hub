@@ -1,0 +1,43 @@
+version: '3.8'
+
+services:
+  laravel:
+    build:
+      context: .
+      dockerfile: Dockerfile.laravel
+    command: php artisan serve --host=0.0.0.0 --port=8000
+    ports:
+      - "9000:8000"
+    volumes:
+      - ./storage:/var/www/html/storage
+      - ./bootstrap/cache:/var/www/html/bootstrap/cache
+      - ./database:/var/www/html/database
+      - ./docker.env:/var/www/html/.env
+    depends_on:
+      - redis
+    networks:
+      - shared-services-network
+
+  websocket:
+    build:
+      context: .
+      dockerfile: Dockerfile.websocket
+    ports:
+      - "8080:8080"
+    volumes:
+      - ./docker.env:/var/www/html/.env
+    depends_on:
+      - redis
+    networks:
+      - shared-services-network
+
+  redis:
+    image: redis:alpine
+    ports:
+      - "6380:6379"
+    networks:
+      - shared-services-network
+
+networks:
+  shared-services-network:
+    external: true
