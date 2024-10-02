@@ -3,6 +3,8 @@
 
 This is the central hub for a real-time cryptocurrency data monitoring system. It serves as a coordinator and data aggregator for multiple crypto-monitor-service instances, each monitoring different cryptocurrency exchanges.
 
+https://github.com/user-attachments/assets/31a813e4-a208-4089-8707-f48a8c4030d1
+
 ## System Architecture Overview
 
 1. Central Hub:
