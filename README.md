@@ -94,12 +94,12 @@ https://github.com/smaiht/crypto-monitor-service
 
 1. Get Price Data:
 - GET /price?exchange={exchange}&symbol={symbol}&datetime={datetime}
-Example: (http://0.0.0.0:8000/price?exchange=okx&symbol=BTC/USDT&datetime=2024-10-01%2005:00:00](http://127.0.0.1:8000/price?exchange=okx&symbol=BTC/USDT&datetime=2024-10-01%2005:00:00)
+Example: [http://0.0.0.0:8000/price?exchange=okx&symbol=BTC/USDT&datetime=2024-10-01%2005:00:00](http://127.0.0.1:8000/price?exchange=okx&symbol=BTC/USDT&datetime=2024-10-01%2005:00:00)
 
 2. Generate Top 100 Trading Pairs:
 - GET /get-top-100/{exchangeName}/{quote}
 - This endpoint generates a `pairs.json` file containing the top 100 trading pairs for a specific exchange.
-Example: (http://0.0.0.0:8000/get-top-100/okx/usdt](http://0.0.0.0:8000/get-top-100/okx/usdt)
+Example: [http://0.0.0.0:8000/get-top-100/okx/usdt](http://0.0.0.0:8000/get-top-100/okx/usdt)
 
 ## Testing
 
